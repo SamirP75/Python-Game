@@ -16,6 +16,16 @@ AVATAR_Y = (Y - AVATAR_SIZE) / 2 # 6
 direction = pygame.K_RIGHT
 
 character_selection = input("Do you want to be Jack or Michael? ")
+avatar_filepath = 'Jack.png'
+if character_selection == "Jack" or "jack":
+    avatar_filepath = 'Jack.png' if direction != pygame.K_LEFT else 'Jack_Left.png'
+elif character_selection == "Michael" or "michael":
+    avatar_filepath = 'Michael.png' if direction != pygame.K_RIGHT else 'Michael_Left.png'
+# Loading Jack.png(the character) and making it transparent.
+img = pygame.image.load(avatar_filepath).convert_alpha()
+
+# Scaling the character so that is fits according to my size in the frame.
+img = pygame.transform.scale(img, (AVATAR_SIZE, AVATAR_SIZE))
 
 screen = pygame.display.set_mode((X, Y))
 clock = pygame.time.Clock()
@@ -29,16 +39,6 @@ while running == True:
     # Creating a border
     house_border = pygame.draw.rect(screen, (152, 59, 16), pygame.Rect(0, 0, X, Y))
     house = pygame.draw.rect(screen, 'black', pygame.Rect(BORDER_SIZE, BORDER_SIZE, X - 2 * BORDER_SIZE, Y - BORDER_SIZE * 2))
-    
-    if character_selection == "Jack" or "jack":
-        avatar_filepath = 'Jack.png' if direction != pygame.K_LEFT else 'Jack_Left.png'
-    elif character_selection == "Michael" or "michael":
-        avatar_filepath = 'Michael.png' if direction != pygame.K_RIGHT else 'Michael_Left.png'
-    # Loading Jack.png(the character) and making it transparent.
-    img = pygame.image.load(avatar_filepath).convert_alpha()
-    
-    # Scaling the character so that is fits according to my size in the frame.
-    img = pygame.transform.scale(img, (AVATAR_SIZE, AVATAR_SIZE))
     
     # Finding the midpoint of the screen.
     midpoint = (AVATAR_X , AVATAR_Y)
