@@ -46,9 +46,6 @@ while running == True:
     # Putting the character in the middle
     # and overlapping the two rectangles that we made earlier plus the character.
     screen.blit(avatar_left if direction == pygame.K_LEFT else avatar, midpoint)
-    
-    print(clock.get_fps())
-    
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
