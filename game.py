@@ -20,13 +20,22 @@ screen = pygame.display.set_mode((X, Y))
 clock = pygame.time.Clock()
 running = True
 
-avatar_filepath = 'Jack.png'
+character_selection = input("Do you want to be Jack or Michael? ")
+if character_selection == 'Jack':
+    avatar_filepath = 'Jack.png'
+    avatar_filepath_left = 'Jack_Left.png'
+elif character_selection == 'Michael':
+    avatar_filepath = 'Michael.png'
+    avatar_filepath_left = 'Michael_Left.png'    
+    
+# Jack.png
 avatar = pygame.image.load(avatar_filepath).convert_alpha()
 avatar = pygame.transform.scale(avatar, (AVATAR_SIZE, AVATAR_SIZE))
 
-avatar_filepath_left = 'Jack_Left.png'
+# Jack_Left.png or Michael_Left.png 
 avatar_left = pygame.image.load(avatar_filepath_left).convert_alpha()
 avatar_left = pygame.transform.scale(avatar_left, (AVATAR_SIZE, AVATAR_SIZE))
+
 # Loading Jack.png(the character) and making it transparent.
 
 # Scaling the character so that is fits according to my size in the frame.
