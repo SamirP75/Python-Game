@@ -58,13 +58,16 @@ while running == True:
     if key_pressed == True:
         if event.key == pygame.K_LEFT:
             AVATAR_X -= VEL
+            
         if event.key == pygame.K_RIGHT:
             AVATAR_X += VEL
+            
         if event.key == pygame.K_UP:
             AVATAR_Y -= VEL
+            
         if event.key == pygame.K_DOWN:
             AVATAR_Y += VEL
-    
+                        
     AVATAR_X = min(X - AVATAR_SIZE, AVATAR_X)
     AVATAR_Y = min(Y - AVATAR_SIZE, AVATAR_Y)
     AVATAR_X = max(0, AVATAR_X)
