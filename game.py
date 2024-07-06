@@ -7,7 +7,7 @@ pygame.init()
 X = 1168
 Y = 655
 BORDER_SIZE = 10
-AVATAR_SIZE = 60
+AVATAR_SIZE = 70
 VEL = 4
 AVATAR_X = (X - AVATAR_SIZE) / 2 # 4
 AVATAR_Y = (Y - AVATAR_SIZE) / 2 # 6
