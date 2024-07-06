@@ -5,7 +5,7 @@ pygame.init()
 
 
 X = 1168
-Y = 655
+Y = 630
 BORDER_SIZE = 10
 AVATAR_SIZE = 70
 VEL = 4
@@ -29,8 +29,9 @@ elif character_selection == 'Michael':
     avatar_filepath_left = 'Michael_Left.png'
 elif character_selection == 'Emily':
     avatar_filepath = 'Emily.png'
-    avatar_filepath_left = 'Emily_Left.png'    
-    
+    avatar_filepath_left = 'Emily_Left.png'   
+
+pygame.display.set_caption("Adventures of " + character_selection)    
 # Jack.png
 avatar = pygame.image.load(avatar_filepath).convert_alpha()
 avatar = pygame.transform.scale(avatar, (AVATAR_SIZE, AVATAR_SIZE))
