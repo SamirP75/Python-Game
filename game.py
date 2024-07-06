@@ -20,13 +20,16 @@ screen = pygame.display.set_mode((X, Y))
 clock = pygame.time.Clock()
 running = True
 
-character_selection = input("Do you want to be Jack or Michael? ")
+character_selection = input("Do you want to be Jack, Michael or Emily? ")
 if character_selection == 'Jack':
     avatar_filepath = 'Jack.png'
     avatar_filepath_left = 'Jack_Left.png'
 elif character_selection == 'Michael':
     avatar_filepath = 'Michael.png'
-    avatar_filepath_left = 'Michael_Left.png'    
+    avatar_filepath_left = 'Michael_Left.png'
+elif character_selection == 'Emily':
+    avatar_filepath = 'Emily.png'
+    avatar_filepath_left = 'Emily_Left.png'    
     
 # Jack.png
 avatar = pygame.image.load(avatar_filepath).convert_alpha()
