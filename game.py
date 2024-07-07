@@ -56,12 +56,16 @@ while running == True:
     # Creating a border
     house_border = pygame.draw.rect(screen, (152, 59, 16), pygame.Rect(0, 0, X, Y))
     house = pygame.draw.rect(screen, 'black', pygame.Rect(BORDER_SIZE, BORDER_SIZE, X - 2 * BORDER_SIZE, Y - BORDER_SIZE * 2))
+    #portal = pygame.draw.rect(screen, 'aquamarine2', (1100, 530, 50, 50))
+    background = pygame.image.load('House_background.png')
+    background = pygame.transform.scale(background, (1148, 610))
     
     # Finding the midpoint of the screen.
     midpoint = (AVATAR_X , AVATAR_Y)
     
     # Putting the character in the middle
     # and overlapping the two rectangles that we made earlier plus the character.
+    screen.blit(background, (10,10))
     screen.blit(avatar_left if direction == pygame.K_LEFT else avatar, midpoint)
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
