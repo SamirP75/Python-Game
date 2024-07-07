@@ -20,7 +20,7 @@ screen = pygame.display.set_mode((X, Y))
 clock = pygame.time.Clock()
 running = True
 
-character_selection = input("Do you want to be Jack, Michael or Emily? ")
+character_selection = input("Do you want to be Jack, Michael, Emily, or Sarah? ")
 
 if character_selection == 'Jack' or character_selection == 'jack':
     avatar_filepath = 'Jack.png'
@@ -31,7 +31,10 @@ elif character_selection == 'Michael' or character_selection == 'michael':
 elif character_selection == 'Emily' or character_selection == 'emily':
     avatar_filepath = 'Emily.png'
     avatar_filepath_left = 'Emily_Left.png'   
-
+elif character_selection == 'Sarah' or character_selection == 'sarah':
+    avatar_filepath = 'Sarah.png'
+    avatar_filepath_left = 'Sarah_Left.png'
+    
 pygame.display.set_caption("Adventures of " + character_selection)    
 # Jack.png
 avatar = pygame.image.load(avatar_filepath).convert_alpha()
