@@ -20,8 +20,10 @@ screen = pygame.display.set_mode((X, Y))
 clock = pygame.time.Clock()
 running = True
 
+# This is where the terminal asks what character you want to be
 character_selection = input("Do you want to be Jack, Michael, Emily, or Sarah? ")
 
+# This is where you select your character and where it displays it based off of what you picked.
 if character_selection == 'Jack' or character_selection == 'jack':
     avatar_filepath = 'Jack.png'
     avatar_filepath_left = 'Jack_Left.png'
@@ -34,23 +36,22 @@ elif character_selection == 'Emily' or character_selection == 'emily':
 elif character_selection == 'Sarah' or character_selection == 'sarah':
     avatar_filepath = 'Sarah.png'
     avatar_filepath_left = 'Sarah_Left.png'
-    
+
+# This is where I name the window (you can see this at the very top of the window)
 pygame.display.set_caption("Adventures of " + character_selection)    
-# Jack.png
+
+# Jack.png, Michael.png, Emily.png, and Sarah.png
 avatar = pygame.image.load(avatar_filepath).convert_alpha()
 avatar = pygame.transform.scale(avatar, (AVATAR_SIZE, AVATAR_SIZE))
 
-# Jack_Left.png or Michael_Left.png 
+# Jack_Left.png, Michael_Left.png, Emily_Left.png, and Sarah_Left.png
 avatar_left = pygame.image.load(avatar_filepath_left).convert_alpha()
 avatar_left = pygame.transform.scale(avatar_left, (AVATAR_SIZE, AVATAR_SIZE))
 
-# Loading Jack.png(the character) and making it transparent.
-
-# Scaling the character so that is fits according to my size in the frame.
 
 while running == True:
     
-            
+    # Making the starting window black.        
     screen.fill('black')
 
     # Creating a border
@@ -75,7 +76,7 @@ while running == True:
             key_pressed = True
         if event.type == pygame.KEYUP:
             key_pressed = False
-
+    # This part is where it determines what the character does when you press any of the arrow keys.    
     if key_pressed == True:
         if event.key == pygame.K_LEFT:
             AVATAR_X -= VEL
@@ -88,7 +89,7 @@ while running == True:
             
         if event.key == pygame.K_DOWN:
             AVATAR_Y += VEL
-                        
+    # This is where we set borders.                    
     AVATAR_X = min(X - AVATAR_SIZE, AVATAR_X)
     AVATAR_Y = min(Y - AVATAR_SIZE, AVATAR_Y)
     AVATAR_X = max(0, AVATAR_X)
