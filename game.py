@@ -4,10 +4,10 @@ pygame.init()
 
 
 
-X = 1168
-Y = 630
+X = 510
+Y = 552
 BORDER_SIZE = 10
-AVATAR_SIZE = 70
+AVATAR_SIZE = 80
 VEL = 4
 AVATAR_X = (X - AVATAR_SIZE) / 2 # 4
 AVATAR_Y = (Y - AVATAR_SIZE) / 2 # 6
@@ -58,7 +58,7 @@ while running == True:
     house = pygame.draw.rect(screen, 'black', pygame.Rect(BORDER_SIZE, BORDER_SIZE, X - 2 * BORDER_SIZE, Y - BORDER_SIZE * 2))
     #portal = pygame.draw.rect(screen, 'aquamarine2', (1100, 530, 50, 50))
     background = pygame.image.load('House_background.png')
-    background = pygame.transform.scale(background, (1148, 610))
+    background = pygame.transform.scale(background, (490, 533))
     
     # Finding the midpoint of the screen.
     midpoint = (AVATAR_X , AVATAR_Y)
