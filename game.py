@@ -93,7 +93,7 @@ while running == True:
     AVATAR_X = min(X - AVATAR_SIZE, AVATAR_X)
     AVATAR_Y = min(Y - AVATAR_SIZE, AVATAR_Y)
     AVATAR_X = max(0, AVATAR_X)
-    AVATAR_Y = max(0, AVATAR_Y)
+    AVATAR_Y = max(100, AVATAR_Y)
     pygame.display.flip()
     
     clock.tick(120)
