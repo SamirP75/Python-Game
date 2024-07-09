@@ -89,9 +89,10 @@ while running == True:
             
         if event.key == pygame.K_DOWN:
             AVATAR_Y += VEL
-    # This is where we set borders.                    
+    # This is where we set borders.   
+    '''Y - AVATAR_SIZE'''                  
     AVATAR_X = min(X - AVATAR_SIZE, AVATAR_X)
-    AVATAR_Y = min(Y - AVATAR_SIZE, AVATAR_Y)
+    AVATAR_Y = min(392, AVATAR_Y)
     AVATAR_X = max(0, AVATAR_X)
     AVATAR_Y = max(100, AVATAR_Y)
     pygame.display.flip()
