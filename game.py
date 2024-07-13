@@ -15,32 +15,17 @@ avatar_y = (constants.Y - constants.AVATAR_SIZE) / 2 # 6
 # This is where the terminal asks what character you want to be
 character_selection = input("Do you want to be Jack, Michael, Emily, or Sarah? ")
 
-# This is where you select your character and where it displays it based off of what you picked.
-if character_selection == 'Jack' or character_selection == 'jack':
-    avatar_filepath = 'Jack.png'
-    avatar_filepath_left = 'Jack_Left.png'
-elif character_selection == 'Michael' or character_selection == 'michael':
-    avatar_filepath = 'Michael.png'
-    avatar_filepath_left = 'Michael_Left.png'
-elif character_selection == 'Emily' or character_selection == 'emily':
-    avatar_filepath = 'Emily.png'
-    avatar_filepath_left = 'Emily_Left.png'   
-elif character_selection == 'Sarah' or character_selection == 'sarah':
-    avatar_filepath = 'Sarah.png'
-    avatar_filepath_left = 'Sarah_Left.png'
-
-avatar_filepath = constants.ASSET_FOLDER + avatar_filepath
-avatar_filepath_left = constants.ASSET_FOLDER + avatar_filepath_left
+selected_character = constants.Character(character_selection)
 
 # This is where I name the window (you can see this at the very top of the window)
 pygame.display.set_caption("Adventures of " + character_selection)    
 
 # Jack.png, Michael.png, Emily.png, and Sarah.png
-avatar = pygame.image.load(avatar_filepath).convert_alpha()
+avatar = pygame.image.load(selected_character.avatar_filepath).convert_alpha()
 avatar = pygame.transform.scale(avatar, (constants.AVATAR_SIZE, constants.AVATAR_SIZE))
 
 # Jack_Left.png, Michael_Left.png, Emily_Left.png, and Sarah_Left.png
-avatar_left = pygame.image.load(avatar_filepath_left).convert_alpha()
+avatar_left = pygame.image.load(selected_character.avatar_filepath_left).convert_alpha()
 avatar_left = pygame.transform.scale(avatar_left, (constants.AVATAR_SIZE, constants.AVATAR_SIZE))
 
 
