@@ -1,25 +1,17 @@
 import pygame
+import constants
 import time
+
 pygame.init()
 
-
-
-X = 510
-Y = 552
-BORDER_SIZE = 10
-AVATAR_SIZE = 80
-VEL = 4
-AVATAR_X = (X - AVATAR_SIZE) / 2 # 4
-AVATAR_Y = (Y - AVATAR_SIZE) / 2 # 6
-
-
+# Global variables - do change
 direction = pygame.K_RIGHT
 key_pressed = False
-
-screen = pygame.display.set_mode((X, Y))
+screen = pygame.display.set_mode((constants.X, constants.Y))
 clock = pygame.time.Clock()
 running = True
-
+avatar_x = (constants.X - constants.AVATAR_SIZE) / 2 # 4
+avatar_y = (constants.Y - constants.AVATAR_SIZE) / 2 # 6
 # This is where the terminal asks what character you want to be
 character_selection = input("Do you want to be Jack, Michael, Emily, or Sarah? ")
 
@@ -37,16 +29,19 @@ elif character_selection == 'Sarah' or character_selection == 'sarah':
     avatar_filepath = 'Sarah.png'
     avatar_filepath_left = 'Sarah_Left.png'
 
+avatar_filepath = constants.ASSET_FOLDER + avatar_filepath
+avatar_filepath_left = constants.ASSET_FOLDER + avatar_filepath_left
+
 # This is where I name the window (you can see this at the very top of the window)
 pygame.display.set_caption("Adventures of " + character_selection)    
 
 # Jack.png, Michael.png, Emily.png, and Sarah.png
 avatar = pygame.image.load(avatar_filepath).convert_alpha()
-avatar = pygame.transform.scale(avatar, (AVATAR_SIZE, AVATAR_SIZE))
+avatar = pygame.transform.scale(avatar, (constants.AVATAR_SIZE, constants.AVATAR_SIZE))
 
 # Jack_Left.png, Michael_Left.png, Emily_Left.png, and Sarah_Left.png
 avatar_left = pygame.image.load(avatar_filepath_left).convert_alpha()
-avatar_left = pygame.transform.scale(avatar_left, (AVATAR_SIZE, AVATAR_SIZE))
+avatar_left = pygame.transform.scale(avatar_left, (constants.AVATAR_SIZE, constants.AVATAR_SIZE))
 
 
 while running == True:
@@ -55,14 +50,14 @@ while running == True:
     screen.fill('black')
 
     # Creating a border
-    house_border = pygame.draw.rect(screen, (152, 59, 16), pygame.Rect(0, 0, X, Y))
-    house = pygame.draw.rect(screen, 'black', pygame.Rect(BORDER_SIZE, BORDER_SIZE, X - 2 * BORDER_SIZE, Y - BORDER_SIZE * 2))
+    house_border = pygame.draw.rect(screen, (152, 59, 16), pygame.Rect(0, 0, constants.X, constants.Y))
+    house = pygame.draw.rect(screen, 'black', pygame.Rect(constants.BORDER_SIZE, constants.BORDER_SIZE, constants.X - 2 * constants.BORDER_SIZE, constants.Y - constants.BORDER_SIZE * 2))
     #portal = pygame.draw.rect(screen, 'aquamarine2', (1100, 530, 50, 50))
-    background = pygame.image.load('House_background.png')
+    background = pygame.image.load(constants.HOUSE_FILEPATH)
     background = pygame.transform.scale(background, (490, 533))
     
     # Finding the midpoint of the screen.
-    midpoint = (AVATAR_X , AVATAR_Y)
+    midpoint = (avatar_x , avatar_y)
     
     # Putting the character in the middle
     # and overlapping the two rectangles that we made earlier plus the character.
@@ -79,22 +74,22 @@ while running == True:
     # This part is where it determines what the character does when you press any of the arrow keys.    
     if key_pressed == True:
         if event.key == pygame.K_LEFT:
-            AVATAR_X -= VEL
+            avatar_x -= constants.VEL
             
         if event.key == pygame.K_RIGHT:
-            AVATAR_X += VEL
+            avatar_x += constants.VEL
             
         if event.key == pygame.K_UP:
-            AVATAR_Y -= VEL
+            avatar_y -= constants.VEL
             
         if event.key == pygame.K_DOWN:
-            AVATAR_Y += VEL
+            avatar_y += constants.VEL
     # This is where we set borders.   
     '''Y - AVATAR_SIZE'''                  
-    AVATAR_X = min(X - AVATAR_SIZE, AVATAR_X)
-    AVATAR_Y = min(392, AVATAR_Y)
-    AVATAR_X = max(0, AVATAR_X)
-    AVATAR_Y = max(100, AVATAR_Y)
+    avatar_x = min(constants.X - constants.AVATAR_SIZE, avatar_x)
+    avatar_y = min(392, avatar_y)
+    avatar_x = max(0, avatar_x)
+    avatar_y = max(100, avatar_y)
     pygame.display.flip()
     
     clock.tick(120)
