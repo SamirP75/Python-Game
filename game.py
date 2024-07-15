@@ -12,9 +12,11 @@ clock = pygame.time.Clock()
 running = True
 avatar_x = (constants.X - constants.AVATAR_SIZE) / 2 # 4
 avatar_y = (constants.Y - constants.AVATAR_SIZE) / 2 # 6
+
 # This is where the terminal asks what character you want to be
 character_selection = input("Do you want to be Jack, Michael, Emily, or Sarah? ")
 
+# This is where is determines what image to load
 selected_character = constants.Character(character_selection)
 
 # This is where I name the window (you can see this at the very top of the window)
@@ -37,7 +39,6 @@ while running == True:
     # Creating a border
     house_border = pygame.draw.rect(screen, (152, 59, 16), pygame.Rect(0, 0, constants.X, constants.Y))
     house = pygame.draw.rect(screen, 'black', pygame.Rect(constants.BORDER_SIZE, constants.BORDER_SIZE, constants.X - 2 * constants.BORDER_SIZE, constants.Y - constants.BORDER_SIZE * 2))
-    #portal = pygame.draw.rect(screen, 'aquamarine2', (1100, 530, 50, 50))
     background = pygame.image.load(constants.HOUSE_FILEPATH)
     background = pygame.transform.scale(background, (490, 533))
     
@@ -48,6 +49,8 @@ while running == True:
     # and overlapping the two rectangles that we made earlier plus the character.
     screen.blit(background, (10,10))
     screen.blit(avatar_left if direction == pygame.K_LEFT else avatar, midpoint)
+    
+    # This detects whether a key is being pressed
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
@@ -69,14 +72,18 @@ while running == True:
             
         if event.key == pygame.K_DOWN:
             avatar_y += constants.VEL
+            
     # This is where we set borders.   
     '''Y - AVATAR_SIZE'''                  
     avatar_x = min(constants.X - constants.AVATAR_SIZE, avatar_x)
     avatar_y = min(392, avatar_y)
     avatar_x = max(0, avatar_x)
     avatar_y = max(100, avatar_y)
+    
+    # Actually putting the things on the window
     pygame.display.flip()
     
+    # Framerate (you can change this to see the difference between two framerates)
     clock.tick(120)
     
     
